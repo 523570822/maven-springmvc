@@ -25,7 +25,7 @@
     </context:component-scan>
 
     <!--<!– 自动扫描 –>-->
-    <!--<context:component-scan base-package="com.vitelon.v"/>-->
+  <context:component-scan base-package="com.springmvc.controller"/>
 
     <!--引入属性文件 -->
     <context:property-placeholder location="classpath:dbconfig.properties" />
@@ -74,11 +74,23 @@
     </bean>
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.springmvc.dao"/>
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.springmvc.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
+   <!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.springmvc.mapper"/>
+    </bean>-->
 
+  <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.springmvc.mapper"/>
+        <property name="properties">
+            <value>
+                mappers=tk.mybatis.mapper.common.Mapper
+            </value>
+        </property>
+
+    </bean>
     <!-- 对dataSource 数据源进行事务管理 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
