@@ -1,12 +1,9 @@
 package com.springmvc.entity;
 
-import io.swagger.annotations.ApiModel;
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
-//一般添加个@ApiModel（）就可以，看情况使用里面的属性
-@ApiModel(value="Ad", discriminator = "foo", subTypes = {Ad.class})
+
 public class Ad implements Serializable {
     /**
      * ID
