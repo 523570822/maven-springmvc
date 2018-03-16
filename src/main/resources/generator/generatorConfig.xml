@@ -78,12 +78,17 @@
             <property  name ="nullCatalogMeansCurrent"  value = "true"/>
 
         </table>-->
-      <table tableName="ad" domainObjectName="Ad" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+   <!--   <table tableName="ad" domainObjectName="Ad" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
 
           <property  name ="nullCatalogMeansCurrent"  value = "true"/>
 
       </table>
         <table tableName="area" domainObjectName="Area" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+
+            <property  name ="nullCatalogMeansCurrent"  value = "true"/>
+
+        </table>-->
+        <table tableName="member" domainObjectName="Member" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
 
             <property  name ="nullCatalogMeansCurrent"  value = "true"/>
 
