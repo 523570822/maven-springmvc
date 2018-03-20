@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
-@Api(value  =  "/pet ",description="关于宠物的操作123")
+@Api(value  =  "/pet ",description="关于宠物的操作123",tags = "关于宠物的操作123")
 @Controller
 
 public class AdApiController {
     @Autowired
     private AdServiceImpl adService;
+
 
    @ResponseBody
    @RequestMapping(value="/ad/adAll",method = RequestMethod.GET)
@@ -46,6 +47,7 @@ public class AdApiController {
         List<Ad> adList=adService.findAll();
         return adList;
     }
+
 }
 
 

@@ -123,6 +123,9 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
     </aop:config>
 
+    <!--借助 SpringAOP 扫描那些使用 Shiro 注解的类-->
+    <aop:config proxy-target-class="true"/>
+
     <!-- 配置使Spring采用CGLIB代理 --><!-- 开启基于@AspectJ切面的注解处理器 -->
     <aop:aspectj-autoproxy proxy-target-class="true" />
 

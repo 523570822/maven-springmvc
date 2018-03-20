@@ -88,10 +88,27 @@
             <property  name ="nullCatalogMeansCurrent"  value = "true"/>
 
         </table>-->
-        <table tableName="member" domainObjectName="Member" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+     <!--   <table tableName="member" domainObjectName="Member" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+
+            <property  name ="nullCatalogMeansCurrent"  value = "true"/>
+
+        </table>-->
+      <!--
+        <table tableName="sys_roles" domainObjectName="SysRoles" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 
             <property  name ="nullCatalogMeansCurrent"  value = "true"/>
 
         </table>
+        <table tableName="sys_permissions" domainObjectName="SysPermissions" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+
+            <property  name ="nullCatalogMeansCurrent"  value = "true"/>
+
+        </table>-->
+        <table tableName="sys_permissions" domainObjectName="SysPermissions" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+
+            <property  name ="nullCatalogMeansCurrent"  value = "true"/>
+
+        </table>
+
     </context>
 </generatorConfiguration>
