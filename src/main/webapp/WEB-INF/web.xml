@@ -6,7 +6,7 @@
          version="3.0">
   <!--welcome pages-->
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
 
   <context-param>
@@ -108,7 +108,7 @@
   <!-- Spring MVC 核心配置结束 -->
 
   <!-- 激活Tomcat的defaultServlet来处理静态文件 -->
-  <servlet-mapping>
+ <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>/statics/*</url-pattern>
   </servlet-mapping>
