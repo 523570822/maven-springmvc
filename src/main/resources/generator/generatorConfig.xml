@@ -104,11 +104,36 @@
             <property  name ="nullCatalogMeansCurrent"  value = "true"/>
 
         </table>-->
-        <table tableName="sys_permissions" domainObjectName="SysPermissions" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+<!--        <table tableName="sys_permissions" domainObjectName="SysPermissions" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+
+            <property  name ="nullCatalogMeansCurrent"  value = "true"/>
+
+        </table>-->
+     <!--   <table tableName="u_user" domainObjectName="UUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 
             <property  name ="nullCatalogMeansCurrent"  value = "true"/>
 
         </table>
+        <table tableName="u_user_role" domainObjectName="UUserRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 
+            <property  name ="nullCatalogMeansCurrent"  value = "true"/>
+
+        </table>
+        <table tableName="u_role_permission" domainObjectName="URolePermission" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+
+            <property  name ="nullCatalogMeansCurrent"  value = "true"/>
+
+        </table>
+        <table tableName="u_role" domainObjectName="URole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+
+            <property  name ="nullCatalogMeansCurrent"  value = "true"/>
+
+        </table>
+        <table tableName="u_permission" domainObjectName="UPermission" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+
+            <property  name ="nullCatalogMeansCurrent"  value = "true"/>
+
+        </table>-->
+        <table tableName=""></table>
     </context>
 </generatorConfiguration>

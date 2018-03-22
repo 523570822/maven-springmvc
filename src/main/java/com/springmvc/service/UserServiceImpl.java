@@ -1,10 +1,8 @@
 package com.springmvc.service;
 
 
-import com.springmvc.entity.Role;
-import com.springmvc.entity.User;
-import com.springmvc.mapper.daomapper.AdMapper;
-import com.springmvc.mapper.daomapper.SysUsersMapper;
+import com.springmvc.entity.UUser;
+import com.springmvc.mapper.daomapper.UUserMapper;
 import com.springmvc.service.base.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.common.BaseMapper;
@@ -15,24 +13,27 @@ import java.util.List;
 
 
 @Service
-public class UserServiceImpl extends BaseServiceImpl<User, Integer>implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<UUser, Integer>implements UserService {
     @Resource
-    private SysUsersMapper mapper;
+    private UUserMapper mapper;
 
     @Override
-    public BaseMapper<User> getMapper() {
+    public BaseMapper<UUser> getMapper() {
         return mapper;
     }
 
     @Override
-    public Role queryRolesByName(String userName) {
-        Example example = new Example(User.class);
-
+    public UUser queryUserByName(String userName) {
+        Example example = new Example(UUser.class);
         Example.Criteria criteria = example.createCriteria();
-
-        criteria.andEqualTo("username",userName);
-        List<User> dfasd = mapper.selectByExample(example);
-
-        return null;
+        criteria.andEqualTo("email",userName);
+        List<UUser> dfasd = mapper.selectByExample(example);
+        if(dfasd==null||dfasd.size()==0){
+            return null;
+        }
+        UUser user = dfasd.get(0);
+            return dfasd.get(0);
     }
-}
+
+
+    }
