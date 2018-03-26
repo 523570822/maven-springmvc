@@ -1,10 +1,9 @@
-package com.springmvc.utils;
+package com.springmvc.common.utils;
 
 import com.springmvc.entity.UUser;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
-import org.apache.shiro.util.ByteSource;
 
 public class PasswordEncry {
 

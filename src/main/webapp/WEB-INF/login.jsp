@@ -32,7 +32,7 @@
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="statics/img/favicon.ico">
     <link href="statics/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="statics/css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
@@ -43,7 +43,7 @@
     <![endif]-->
 
 
-    <script src="http://open.sojson.com/common/js/canvas-nest.min.js" count="200" zindex="-2" opacity="0.8" color="47,135,193" type="text/javascript"></script>
+
 
 
 
@@ -52,9 +52,7 @@
 
 
 
-    <!-- 全局js -->
-    <script src="statics/js/jquery.min.js?v=2.1.4"></script>
-    <script src="statics/js/bootstrap.min.js?v=3.3.6"></script>
+
     <style type="text/css">
         .middle-box h1 {
             font-size: 100px;
@@ -62,10 +60,10 @@
     </style>
 
 
-
 </head>
 
 <body class="gray-bg">
+<script src="http://open.sojson.com/common/js/canvas-nest.min.js" count="200" zindex="-2" opacity="0.8" color="47,135,193" type="text/javascript"></script>
 <div class="middle-box text-center loginscreen  animated fadeInDown">
     <div>
         <div>
@@ -75,15 +73,17 @@
         </div>
         <h3>欢迎使用</h3>
 <%--admin/login--%>
-        <form class="m-t" role="form" action="admin/login"   method="post">
-            <div class="form-group">
-                <input type="text" name ="username"  class="form-control" placeholder="用户名" required="" value="admin">
+        <form class="layadmin-user-login-box layadmin-user-login-body layui-form" role="form" action="admin/login"   method="post">
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="username"></label>
+                <input type="text" id="username" name ="username"  class="form-control" placeholder="用户名" required="" value="admin">
             </div>
-            <div class="form-group">
+            <div class="layui-form-item">
                 <input type="password" name="password" class="form-control" placeholder="密码" required="" value="sojson">
             </div>
-            <div class="form-group">
-                <input type="text" name="rememberMe" class="form-control" placeholder="验证码" required="" value="123">
+            <div class="layui-form-item" id="vcode">
+                <input type="text" name="vcode"   placeholder="Verification code" style="width: 110px; margin-left: -8px; margin-right: 8px;">
+                <img src="${basePath}/open/getGifCode.shtml" />
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
 
@@ -94,7 +94,23 @@
         </form>
     </div>
 </div>
+<!-- 全局js -->
+<script src="statics/js/jquery.min.js?v=2.1.4"></script>
+<script  src="statics/js/plugins/layer/layer.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        if("${massages}"==0){
+            console.info("111"+"${massages}");
+        }else{
+            layer.msg("${massages}");
+        }
 
+    });
+
+
+
+
+</script>
 
 
 

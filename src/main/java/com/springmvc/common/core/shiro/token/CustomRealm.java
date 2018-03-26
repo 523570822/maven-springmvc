@@ -1,10 +1,12 @@
-package com.springmvc.shiro;
+package com.springmvc.common.core.shiro.token;
 
 import com.springmvc.entity.UUser;
 import com.springmvc.service.RoleService;
 import com.springmvc.service.UserService;
-import com.springmvc.utils.PasswordEncry;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -21,18 +23,8 @@ public class CustomRealm extends AuthorizingRealm {
    private UserService userService;
     @Autowired
     private RoleService roleService;
-    /**
-     * 用户授权认证
-     */
-    @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        logger.info("======用户授权认证======");
-        String userName = principalCollection.getPrimaryPrincipal().toString();
-        // String username = (String) principals.fromRealm(getName()).iterator().next();   //第二种获取用户名写法
-        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-        simpleAuthorizationInfo.setRoles(roleService.queryRolesByName(userName));
-        return simpleAuthorizationInfo;
-    }
+
+
     /**
      * 用户登陆认证
      */
@@ -43,16 +35,30 @@ public class CustomRealm extends AuthorizingRealm {
         //令牌中可以取出用户名
         String userName = token.getUsername();
         //String userName = authenticationToken.getPrincipal().toString();  //第二种获取用户名写法
-      UUser user = userService.queryUserByName(userName);
+        UUser user = userService.queryUserByName(userName);
 
 
-      if (user!=null) {
+        if (user!=null) {
             //AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), getName());
-          AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getNickname(), user.getPswd(), getName());
-      return authenticationInfo;
-      }
+            AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getNickname(), user.getPswd(), getName());
+            return authenticationInfo;
+        }
         return null;
     }
+    /**
+     * 用户授权认证
+     */
+
+    @Override
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        logger.info("======用户授权认证======");
+        String userName = principalCollection.getPrimaryPrincipal().toString();
+        // String username = (String) principals.fromRealm(getName()).iterator().next();   //第二种获取用户名写法
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+        simpleAuthorizationInfo.setRoles(roleService.queryRolesByName(userName));
+        return simpleAuthorizationInfo;
+    }
+
 
 
     /**

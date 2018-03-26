@@ -1,4 +1,4 @@
-package com.springmvc.utils;
+package com.springmvc.common.utils;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;

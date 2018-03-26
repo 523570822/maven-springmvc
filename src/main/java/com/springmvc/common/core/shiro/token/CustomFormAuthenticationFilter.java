@@ -1,5 +1,6 @@
-package com.springmvc.shiro;
+package com.springmvc.common.core.shiro.token;
 
+import com.springmvc.common.core.shiro.token.manager.TokenManager;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 
@@ -14,13 +15,14 @@ public class CustomFormAuthenticationFilter extends FormAuthenticationFilter {
 
         // 在这里进行验证码的校验
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        HttpSession session = httpServletRequest.getSession();
-
         // 取出验证码
-        String validateCode = (String) session.getAttribute("validateCode");
+        String validateCode=TokenManager.getYZM();
+
+
+
         // 取出页面的验证码
         // 输入的验证和session中的验证进行对比
-       String randomcode = httpServletRequest.getParameter("rememberMe");
+       String randomcode = httpServletRequest.getParameter("vcode");
        if (randomcode != null && validateCode != null && !randomcode.equals(validateCode)) {
             // 如果校验失败，将验证码错误失败信息，通过shiroLoginFailure设置到request中
             httpServletRequest.setAttribute("shiroLoginFailure", "randomCodeError");
@@ -41,8 +43,8 @@ public class CustomFormAuthenticationFilter extends FormAuthenticationFilter {
         {
             if (isLoginSubmission(request, response))
             {
-                subject.logout();
-          /*      //本次用户登陆账号
+           //     subject.logout();
+                //本次用户登陆账号
 
 
 
@@ -54,7 +56,7 @@ public class CustomFormAuthenticationFilter extends FormAuthenticationFilter {
                 if (account != null && username != null && !account.equals(username))
                 {
                     subject.logout();
-                }*/
+                }
             }
         }
 

@@ -28,6 +28,7 @@
                <!-- /images/** = anon
                 /js/** = anon
                 /css/** = anon-->
+                /open/** = anon
                 /statics/**  = anon
                 /styles/** = anon
                 <!--接口文档开放-->
@@ -70,7 +71,7 @@
         <property name="rememberMeManager" ref="rememberMeManager" />
     </bean>
 
-    <bean id="customRealm" class="com.springmvc.shiro.CustomRealm">
+    <bean id="customRealm" class="com.springmvc.common.core.shiro.token.CustomRealm">
         
 <property name="credentialsMatcher"  ref="credentialsMatcher"></property>
 
@@ -102,7 +103,7 @@
         <property name="rememberMeParam" value="rememberMe" />
     </bean>-->
     <!--扩展表单认证过滤器-->
-    <bean id="formAuthenticationFilter" class="com.springmvc.shiro.CustomFormAuthenticationFilter">
+    <bean id="formAuthenticationFilter" class="com.springmvc.common.core.shiro.token.CustomFormAuthenticationFilter">
 
         <!-- 表单中账号的input名称 -->
         <property name="usernameParam" value="username" />
@@ -122,13 +123,13 @@
     <!-- 会话管理器 -->
     <bean id="sessionManager"
           class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
-        <property name="globalSessionTimeout" value="1800000"/>
-        <property name="deleteInvalidSessions" value="true"/>
+        <property name="globalSessionTimeout" value="18000000"/>
+      <!--  <property name="deleteInvalidSessions" value="true"/>
         <property name="sessionValidationSchedulerEnabled" value="true"/>
         <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
         <property name="sessionDAO" ref="sessionDAO"/>
         <property name="sessionIdCookieEnabled" value="true"/>
-        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>-->
     </bean>
     <!-- 会话ID生成器 -->
     <bean id="sessionIdGenerator"
@@ -144,12 +145,12 @@
     <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
         <constructor-arg value="sid"/>
         <property name="httpOnly" value="true"/>
-        <property name="maxAge" value="180000"/>
+        <property name="maxAge" value="18000000"/>
     </bean>
     <!-- 会话验证调度器 -->
    <bean id="sessionValidationScheduler"
           class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
-        <property name="sessionValidationInterval" value="1800000"/>
+        <property name="sessionValidationInterval" value="18000000"/>
         <property name="sessionManager" ref="sessionManager"/>
     </bean>
 
