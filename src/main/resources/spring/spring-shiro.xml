@@ -24,10 +24,12 @@
         </property>
         <property name="filterChainDefinitions">
             <value>
+
                 <!-- 对静态资源设置匿名访问 -->
                <!-- /images/** = anon
                 /js/** = anon
                 /css/** = anon-->
+                /stat.jsp = anon
                 /open/** = anon
                 /statics/**  = anon
                 /styles/** = anon
@@ -49,6 +51,7 @@
                  = perms[item:edit] -->
                 <!-- 配置记住我或认证通过可以访问的地址 -->
                 /welcome.jsp = user
+
                 /admin/index.do = user
                 <!-- /** = authc 所有url都必须认证通过才可以访问 -->
                 /** = authc

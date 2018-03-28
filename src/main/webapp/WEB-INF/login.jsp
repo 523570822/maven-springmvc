@@ -29,15 +29,11 @@
 
 
     <title>H+ 11后台主题UI框架 - 登录</title>
-    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
-    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
-
+    <link rel="stylesheet" href="statics/css/init.css">
+    <link rel="stylesheet" href="statics/layui/css/layui.css">
+    <link rel="stylesheet" href="statics/css/login.css">
+    <link rel="stylesheet" href="statics/css/dist/admin.css">
     <link rel="shortcut icon" href="statics/img/favicon.ico">
-    <link href="statics/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="statics/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-
-    <link href="statics/css/animate.css" rel="stylesheet">
-    <link href="statics/css/style.css?v=4.1.0" rel="stylesheet">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
@@ -52,28 +48,63 @@
 
 
 
-
-    <style type="text/css">
-        .middle-box h1 {
-            font-size: 100px;
-        }
-    </style>
-
-
 </head>
 
-<body class="gray-bg">
+<body class="layui-layout-body">
 <script src="http://open.sojson.com/common/js/canvas-nest.min.js" count="200" zindex="-2" opacity="0.8" color="47,135,193" type="text/javascript"></script>
-<div class="middle-box text-center loginscreen  animated fadeInDown">
-    <div>
-        <div>
+<div id="LAY_app" class="layadmin-tabspage-none">
+    <div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
+        <div class="layadmin-user-login-main">
+          <div class="layadmin-user-login-box layadmin-user-login-header">.
+              <h1 class="logo-name">任性猫</h1>
+              <h3>欢迎使用</h3>
+          </div>
 
-            <h1 class="logo-name">任性猫</h1>
+            <form class="layadmin-user-login-box layadmin-user-login-body layui-form" role="form" action="admin/login"   method="post">
+            <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+                <div class="layui-form-item">
+                    <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="LAY-user-login-username"></label>
 
-        </div>
-        <h3>欢迎使用</h3>
-<%--admin/login--%>
-        <form class="layadmin-user-login-box layadmin-user-login-body layui-form" role="form" action="admin/login"   method="post">
+                    <input type="text" name="username" id="LAY-user-login-username" autocomplete="off" lay-verify="required" placeholder="用户名" class="layui-input">
+
+                </div>
+                <div class="layui-form-item">
+                    <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-user-login-password"></label>
+                    <input type="password" name="password" id="LAY-user-login-password" autocomplete="off" lay-verify="required" placeholder="密码" class="layui-input">
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-row">
+                        <div class="layui-col-xs7">
+                            <label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="LAY-user-login-vercode"></label>
+                            <input type="text" name="vcode" autocomplete="off" id="LAY-user-login-vercode" lay-verify="required" placeholder="图形验证码" class="layui-input">
+                        </div>
+                        <div class="layui-col-xs5">
+                            <div style="margin-left: 10px;">
+                                <img src="${basePath}/open/getGifCode.shtml" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item" style="margin-bottom: 20px;">
+                    <input type="checkbox" name="remember" lay-skin="primary" title="记住密码"><div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>记住密码</span><i class="layui-icon"></i></div>
+                    <a lay-href="/user/forget" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a>
+                </div>
+                <div class="layui-form-item">
+                    <button class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="LAY-user-login-submit">登 入</button>
+                </div>
+                <div class="layui-trans layui-form-item layadmin-user-login-other">
+                    <label>社交账号登入</label>
+                    <a href="javascript:;"><i class="layui-icon layui-icon-login-qq"></i></a>
+                    <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
+                    <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>
+
+                    <a lay-href="/user/reg" class="layadmin-user-jump-change layadmin-link">注册帐号</a>
+                </div>
+            </div>
+
+<%--
+admin/login
+
             <div class="layui-form-item">
                 <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="username"></label>
                 <input type="text" id="username" name ="username"  class="form-control" placeholder="用户名" required="" value="admin">
@@ -90,22 +121,35 @@
 
             <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
             </p>
+--%>
 
         </form>
+        </div>
     </div>
 </div>
 <!-- 全局js -->
-<script src="statics/js/jquery.min.js?v=2.1.4"></script>
-<script  src="statics/js/plugins/layer/layer.min.js"></script>
+
+<script src="statics/layui/layui.js"></script>
+
 <script type="text/javascript">
-    $(function(){
-        if("${massages}"==0){
-            console.info("111"+"${massages}");
-        }else{
-            layer.msg("${massages}");
-        }
+
+    layui.use('form', function(){
+
+
+            if("layui.${massages}"==0){
+                console.info("111"+"layui.${massages}");
+            }else{
+                layer.msg("layui.${massages}");
+            }
+
+
+
 
     });
+
+
+
+
 
 
 

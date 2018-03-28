@@ -79,19 +79,30 @@ String massages="0";
         modelAndView.addObject("massages",massages);
         return modelAndView;
     }
-    @RequestMapping("/admin/index")
+    @RequestMapping("/views/index")
     public String doLogin(HttpServletRequest request){
 
 
         return "/views/index";
     }
 
+    @RequestMapping("/admin/index")
+    public String index(HttpServletRequest request){
+
+
+        return "/views/indexx";
+    }
     @RequestMapping("/admin/home")
     public String home(HttpServletRequest request){
 
 
         return "/views/home";
     }
+    @RequestMapping("views/layout")
+    public String layout(HttpServletRequest request){
 
+
+        return "/views/layout";
+    }
 
 }

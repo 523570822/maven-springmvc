@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="statics/css/init.css">
 <form class="layui-form" action="" lay-filter="form">
     <div class="layui-form-item">
         <label class="layui-form-label">输入框</label>
@@ -62,7 +63,7 @@
 </form>
 
 
-<script src="statics/layui/layui.js"></script>
+
 <script>
     layui.config({
         dir: 'statics/layui/'
