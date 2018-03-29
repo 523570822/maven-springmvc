@@ -44,7 +44,7 @@
             })
         }
     }, s = "#LAY_app_body", u = "layadmin-layout-tabs", d = layui.$, c = d(window);
-    layui.link("../statics/css/style/admin.css?v=" + (i.v + "-1"), function () {
+    layui.link("statics/css/style/admin.css?v=" + (i.v + "-1"), function () {
         r()
     }, "layuiAdmin"), window.onhashchange = function () {
         r(), layui.event.call(this, a.MOD_NAME, "hash({*})", layui.router())

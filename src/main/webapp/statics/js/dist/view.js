@@ -16,7 +16,8 @@
         var a = e.success, n = (e.error, r.request), o = r.response, s = function () {
             return r.debug ? "<br><cite>URL：</cite>" + e.url : ""
         };
-        return e.data = e.data || {}, e.headers = e.headers || {}, n.tokenName && (e.data[n.tokenName] = n.tokenName in e.data ? e.data[n.tokenName] : layui.data(r.tableName)[n.tokenName] || "", e.headers[n.tokenName] = n.tokenName in e.headers ? e.headers[n.tokenName] : layui.data(r.tableName)[n.tokenName] || ""), delete e.success, delete e.error, t.ajax(t.extend({
+        return e.data = e.data || {}, e.headers = e.headers || {}, n.tokenName && (e.data[n.tokenName] = n.tokenName in e.data ? e.data[n.tokenName] : layui.data(r.tableName)[n.tokenName] || "", e.headers[n.tokenName] = n.tokenName in e.headers ? e.headers[n.tokenName] : layui.data(r.tableName)[n.tokenName] || ""), delete e.success, delete e.error,
+            t.ajax(t.extend({
             type: "get",
             dataType: "json",
             success: function (t) {
@@ -54,7 +55,11 @@
     }, d.prototype.render = function (e, a) {
         var n = this;
         layui.router();
-        return e = ""+r.views + e + r.engine, t("#" + s).children(".layadmin-loading").remove(), i.loading(n.container), t.ajax({
+        return e = ""+r.views + e + r.engine, t("#" + s).children(".layadmin-loading").remove(), i.loading(n.container),
+
+
+
+            t.ajax({
             url: e,
             type: "get",
             dataType: "html",
@@ -67,7 +72,9 @@
             error: function (e) {
                 return i.removeLoad(), n.render.isError ? i.error("请求视图文件异常，状态：" + e.status) : (404 === e.status ? n.render("template/tips/404") : n.render("template/tips/error"), void(n.render.isError = !0))
             }
-        }), n
+        })
+            ,
+            n
     }, d.prototype.parse = function (e, n, r) {
         var s = this, d = "object" == typeof e, l = d ? e : t(e), u = d ? e : l.find("*[template]"), c = function (e) {
             var n = a(e.dataElem.html());

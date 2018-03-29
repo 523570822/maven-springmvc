@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="statics/css/init.css">
     <link rel="stylesheet" href="statics/layui/css/layui.css">
     <link rel="stylesheet" href="statics/css/login.css">
-    <link rel="stylesheet" href="statics/css/dist/admin.css">
+    <link rel="stylesheet" href="statics/css/style/admin.css">
     <link rel="shortcut icon" href="statics/img/favicon.ico">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
@@ -72,15 +72,15 @@
                     <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-user-login-password"></label>
                     <input type="password" name="password" id="LAY-user-login-password" autocomplete="off" lay-verify="required" placeholder="密码" class="layui-input">
                 </div>
-                <div class="layui-form-item">
-                    <div class="layui-row">
+                <div class="layui-form-item" id="vcode">
+                    <div class="layui-row" >
                         <div class="layui-col-xs7">
                             <label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="LAY-user-login-vercode"></label>
                             <input type="text" name="vcode" autocomplete="off" id="LAY-user-login-vercode" lay-verify="required" placeholder="图形验证码" class="layui-input">
                         </div>
-                        <div class="layui-col-xs5">
-                            <div style="margin-left: 10px;">
-                                <img src="${basePath}/open/getGifCode.shtml" />
+                        <div class="layui-col-xs5" >
+                            <div style="margin-left: 10px;" >
+                                <img   src="${basePath}/open/getGifCode.shtml" />
                             </div>
                         </div>
                     </div>
@@ -134,15 +134,29 @@ admin/login
 <script type="text/javascript">
 
     layui.use('form', function(){
+        var $ = layui.$ //重点处
 
+            if("${massages}"=="0"){
 
-            if("layui.${massages}"==0){
-                console.info("111"+"layui.${massages}");
             }else{
-                layer.msg("layui.${massages}");
+
+                layer.msg("${massages}");
             }
 
+       $(function(){
 
+
+            //验证码
+            $("#vcode").on("click","img",function(){
+
+
+                /**动态验证码，改变地址，多次在火狐浏览器下，不会变化的BUG，故这样解决*/
+                var i = new Image();
+                i.src = '${basePath}/open/getGifCode.shtml?'  + Math.random();
+                $(i).replaceAll(this);
+                //$(this).clone(true).attr("src",'${basePath}/open/getGifCode.shtml?'  + Math.random()).replaceAll(this);
+            });
+        });
 
 
     });

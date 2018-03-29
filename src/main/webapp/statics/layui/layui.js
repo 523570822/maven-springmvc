@@ -49,7 +49,11 @@
     }, o.prototype.use = function (e, o, l) {
         function s(e, t) {
             var o = "PLaySTATION 3" === navigator.platform ? /^complete$/ : /^(complete|loaded)$/;
+
+
+
             ("load" === e.type || o.test((e.currentTarget || e.srcElement).readyState)) && (n.modules[f] = t, d.removeChild(v), function r() {
+
                 return ++m > 1e3 * n.timeout / 4 ? a(f + " is not a valid module") : void(n.status[f] ? c() : setTimeout(r, 4))
             }())
         }

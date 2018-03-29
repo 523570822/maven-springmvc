@@ -32,7 +32,7 @@
                     <i class="layui-icon layui-icon-notice"></i>
 
                     <!-- 如果有新消息，则显示小圆点 -->
-                    <script type="text/html" template lay-url="../statics/json/new.json">
+                    <script type="text/html" template lay-url="statics/json/new.json">
                         {{# if(d.data.newmsg){ }}
                         <span class="layui-badge-dot"></span>
                         {{# } }}
@@ -51,7 +51,7 @@
                 </a>
             </li>
             <li class="layui-nav-item" lay-unselect>
-                <script type="text/html" template lay-url="../statics/json/session.json"
+                <script type="text/html" template lay-url="statics/json/session.json"
                         lay-done="layui.element.render('nav', 'layadmin-layout-right');">
                     <a href="javascript:;">
                         <cite>{{ d.data.username }}</cite>
@@ -77,7 +77,7 @@
     <!-- 侧边菜单 -->
     <div class="layui-side layui-side-menu">
         <div class="layui-side-scroll">
-            <script type="text/html" template lay-url="../statics/json/menu.json?v=3"
+            <script type="text/html" template lay-url="statics/json/menu.json?v=3"
                     lay-done="layui.element.render('nav', 'layadmin-system-side-menu');" id="TPL_layout">
 
                 <div class="layui-logo" lay-href="">

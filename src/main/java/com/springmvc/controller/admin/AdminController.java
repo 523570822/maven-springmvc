@@ -79,7 +79,7 @@ String massages="0";
         modelAndView.addObject("massages",massages);
         return modelAndView;
     }
-    @RequestMapping("/views/index")
+    @RequestMapping("/index")
     public String doLogin(HttpServletRequest request){
 
 
@@ -98,11 +98,16 @@ String massages="0";
 
         return "/views/home";
     }
-    @RequestMapping("views/layout")
+    @RequestMapping("layout")
     public String layout(HttpServletRequest request){
 
 
         return "/views/layout";
     }
+    @RequestMapping("user/administrators/role")
+    public String list(HttpServletRequest request){
 
+
+        return "/views/user/administrators/role";
+    }
 }

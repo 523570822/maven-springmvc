@@ -330,7 +330,7 @@ html {
 
 .layadmin-side-shrink .layui-layout-admin .layui-logo {
     width: 60px;
-    background-image: url(res/logo.png)
+    background-image: url( res/logo.png)
 }
 
 .layadmin-side-shrink .layui-layout-admin .layui-logo span {
@@ -1041,11 +1041,11 @@ html {
 
 @-webkit-keyframes layui-lr {
     from {
-        -webkit-transform: translate3d(0 0, 0);
+        -webkit-transform: translate3d(0 ,0,0);
         opacity: 1
     }
     to {
-        -webkit-transform: translate3d(100%,, 0, 0);
+        -webkit-transform: translate3d(100%, 0, 0);
         opacity: 1
     }
 }

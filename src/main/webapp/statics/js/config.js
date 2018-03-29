@@ -11,15 +11,15 @@ layui.define(['laytpl', 'layer', 'element', 'util'], function(exports){
 
     exports('setter', {
         container: 'LAY_app' //容器ID
-        ,base: "../statics/js/dist/"//记录layuiAdmin文件夹所在路径
-        ,views: '../views/' //视图所在目录
+        ,base: "statics/js/dist/"//记录layuiAdmin文件夹所在路径
+        ,views: '' //视图所在目录
         ,entry: 'index' //默认视图文件名
         ,engine: '' //视图文件后缀名
         ,pageTabs: false //是否开启页面选项卡功能
 
         ,name: 'layuiAdmin Pro'
         ,tableName: 'layuiAdmin' //本地存储表名
-        ,MOD_NAME: 'admin123' //模块事件名
+        ,MOD_NAME: 'statics/layui/lay/modules' //模块事件名
 
         ,debug: true //是否开启调试模式。如开启，接口异常时会抛出异常 URL 等信息
 
