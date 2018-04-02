@@ -22,12 +22,14 @@
 
   <%--  <link rel="stylesheet" href="statics/css/init.css">--%>
     <link rel="stylesheet" href="statics/layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="statics/css/init.css">
     <script>
         /^http(s*):\/\//.test(location.href) || alert('请先部署到 localhost 下再访问');
     </script>
 </head>
 <body>
 <div id="LAY_app"></div>
+<div id="wqweq"></div>
 <%--<script src="//res.layui.com/layui/rc/layui.js?t=20180323-1"></script>--%>
 <%--<script src="../statics/js/plugins/jquery.min.js"></script>--%>
 <script src="statics/layui/layui.js"></script>

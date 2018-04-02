@@ -16,8 +16,7 @@
         var a = e.success, n = (e.error, r.request), o = r.response, s = function () {
             return r.debug ? "<br><cite>URL：</cite>" + e.url : ""
         };
-        return e.data = e.data || {}, e.headers = e.headers || {}, n.tokenName && (e.data[n.tokenName] = n.tokenName in e.data ? e.data[n.tokenName] : layui.data(r.tableName)[n.tokenName] || "", e.headers[n.tokenName] = n.tokenName in e.headers ? e.headers[n.tokenName] : layui.data(r.tableName)[n.tokenName] || ""), delete e.success, delete e.error,
-            t.ajax(t.extend({
+        return e.data = e.data || {}, e.headers = e.headers || {}, n.tokenName && (e.data[n.tokenName] = n.tokenName in e.data ? e.data[n.tokenName] : layui.data(r.tableName)[n.tokenName] || "", e.headers[n.tokenName] = n.tokenName in e.headers ? e.headers[n.tokenName] : layui.data(r.tableName)[n.tokenName] || ""), delete e.success, delete e.error, t.ajax(t.extend({
             type: "get",
             dataType: "json",
             success: function (t) {

@@ -12,3 +12,7 @@ springfox swagger2
     通过导好的jar包直接生成API文档
     1.配置文件路径com.springmvc.apiController  WebAppConfig
     2.直接访问项目名+swagger-ui.html或docs.html
+
+
+    3.增加table分页
+     1. mybatis pagehelper分页插件使用（https://blog.csdn.net/qq_26790807/article/details/62429290）

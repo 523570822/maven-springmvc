@@ -1,3 +1,4 @@
+/*
 html{color:#000;background:#FFF;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,
 fieldset,input,textarea,p,blockquote,th,td {
@@ -40,7 +41,7 @@ a{
     text-decoration: none;
     color: #000000;
     font-size:15px;
-    /*字体*/
+    !*字体*!
 }
 li{
     list-style: none;
@@ -58,4 +59,36 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     background-color: rgb(241, 253, 255);
     background-image: none;
     color: rgb(0, 0, 0);
+}
+
+*/
+
+.toolbar {
+    color: #333333;
+}
+
+.toolbar .layui-form-select input {
+    height: 35px;
+    line-height: 35px;
+    width: 150px;
+    overflow: hidden;
+}
+
+.toolbar .layui-form-select {
+    display: inline-block;
+}
+.search-input {
+    width: 150px;
+    display: inline-block;
+    height: 36px;
+    vertical-align: middle;
+    padding: 3px 6px;
+    padding-left: 35px;
+}
+.model-form {
+    padding-top: 30px;
+    padding-right: 45px;
+}
+.model-form-footer {
+    text-align: right;
 }

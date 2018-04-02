@@ -1,6 +1,7 @@
 package com.springmvc.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "u_role")
@@ -16,6 +17,20 @@ public class URole implements Serializable {
      * 角色类型
      */
     private String type;
+
+    private String comments;
+
+    @Column(name = "create_time")
+    private Date createTime;
+
+    @Column(name = "update_time")
+    private Date updateTime;
+
+    /**
+     * 是否删除
+     */
+    @Column(name = "is_delete")
+    private Integer isDelete;
 
     private static final long serialVersionUID = 1L;
 
@@ -67,5 +82,65 @@ public class URole implements Serializable {
      */
     public void setType(String type) {
         this.type = type == null ? null : type.trim();
+    }
+
+    /**
+     * @return comments
+     */
+    public String getComments() {
+        return comments;
+    }
+
+    /**
+     * @param comments
+     */
+    public void setComments(String comments) {
+        this.comments = comments == null ? null : comments.trim();
+    }
+
+    /**
+     * @return create_time
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * @param createTime
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    /**
+     * @return update_time
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * @param updateTime
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    /**
+     * 获取是否删除
+     *
+     * @return is_delete - 是否删除
+     */
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    /**
+     * 设置是否删除
+     *
+     * @param isDelete 是否删除
+     */
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 }

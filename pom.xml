@@ -425,6 +425,13 @@
       <artifactId>shiro-freemarker-tags</artifactId>
       <version>0.1</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+    <!--分页用到-->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>5.1.2</version>
+    </dependency>
 
 
   </dependencies>

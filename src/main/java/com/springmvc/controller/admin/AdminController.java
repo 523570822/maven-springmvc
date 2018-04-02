@@ -1,7 +1,6 @@
 package com.springmvc.controller.admin;
 import com.springmvc.service.RoleService;
 import io.swagger.annotations.*;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.slf4j.Logger;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Set;
 
 @Api(value  =  "/admin ",description="后台用户登陆权限接口",tags = "后台用户登陆权限接口")
