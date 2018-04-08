@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-@Table(name = "u_role")
-public class URole implements Serializable {
+@Table(name = "role")
+public class Role implements Serializable {
     private Long id;
 
     /**

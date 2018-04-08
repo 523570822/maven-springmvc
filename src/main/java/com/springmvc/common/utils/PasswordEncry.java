@@ -1,6 +1,6 @@
 package com.springmvc.common.utils;
 
-import com.springmvc.entity.UUser;
+import com.springmvc.entity.User;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
@@ -21,7 +21,7 @@ public class PasswordEncry {
      * @param userLogin  登录识别串（用户名）
      * @return
      */
-    public static UUser encrypt(UUser userLogin) {
+    public static User encrypt(User userLogin) {
 
         String newPassword =
                 new SimpleHash(algorithmName,userLogin.getPswd(),null,hashIterations).toHex();

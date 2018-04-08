@@ -2,23 +2,25 @@ var $=layui.$;
 layui.use(['form', 'table'], function(){
     var $=layui.$;
 
-
     //渲染下拉
     layui.form.render('select');
     //渲染表格
 	layui.table.render({
 		elem : '#table',
-        url : 'api/role/list',
+        url : 'permission/list',
 		page: true,
 
 		cols: [[
-			{type:'numbers'},
-			{field:'id', sort: true, title: 'ID'},
-			{field:'name', sort: true, title: '角色名'},
-			{field:'comments', sort: true, title: '备注'},
-			{field:'createTime', sort: true, templet:function(d){ return layui.util.toDateString(d.createTime); }, title: '创建时间'},
-			{field:'isDelete', sort: true, templet: '#statusTpl',width: 80, title: '状态'},
-			{align:'center', toolbar: '#barTpl', minWidth: 180, title: '操作'}
+            {type:'numbers'},
+            {field:'id', sort: true, title: 'ID'},
+            {field:'parentName', sort: true, title: '父级'},
+            {field:'name', sort: true, title: '名称'},
+            {field:'value', sort: true, title: '权限值'},
+            {field:'orderNumber', sort: true,title: '排序号'},
+            {field:'type', sort: true, templet:function(d){ return d.type==0?'菜单':'按钮'; }, title: '类型'},
+            {field:'createTime', sort: true, templet:function(d){ return layui.util.toDateString(d.createTime); }, title: '创建时间'},
+            {field:'isDelete', sort: true, templet: '#statusTpl',width: 80, title: '状态'},
+            {align:'center', toolbar: '#barTpl', minWidth: 110, title: '操作'}
     	]]
 	});
 	
@@ -71,28 +73,73 @@ layui.use(['form', 'table'], function(){
 	});
 });
 
+
 //显示表单弹窗
 function showEditModel(data){
-	layer.open({
-		type: 1,
-		title: data==null?"添加角色":"修改角色",
-		area: '450px',
-		offset: '120px',
-		content: $("#addModel").html()
-	});
-	$("#editForm")[0].reset();
-	$("#editForm").attr("method","POST");
-	if(data!=null){
-		$("#editForm input[name=roleId]").val(data.id);
-		$("#editForm input[name=roleName]").val(data.name);
-		$("#editForm textarea[name=comments]").val(data.comments);
-		$("#editForm").attr("method","PUT");
-	}
-	$("#btnCancel").click(function(){
-		layer.closeAll('page');
-	});
-}
+    layer.open({
+        type: 1,
+        title: data==null?"添加权限":"修改权限",
+        area: '450px',
+        offset: '120px',
+        content: $("#addModel").html()
+    });
+    $("#editForm")[0].reset();
+    $("#editForm").attr("method","POST");
+    var selectItem = "";
+    var type = 0;
+    if(data!=null){
+        $("#editForm input[name=permissionId]").val(data.permissionId);
+        $("#editForm input[name=permissionName]").val(data.permissionName);
+        $("#editForm input[name=permissionValue]").val(data.permissionValue);
+        $("#editForm input[name=orderNumber]").val(data.orderNumber);
+        $("#editForm").attr("method","PUT");
+        selectItem = data.parentId;
+        type = data.type;
+        if(0==data.type){
+            $("#type0").attr("checked","checked");
+            $("#type1").removeAttr("checked");
+        }else{
+            $("#type0").removeAttr("checked");
+            $("#type1").attr("checked","checked");
+        }
+        layui.form.render('radio');
+    }
+    $("#btnCancel").click(function(){
+        layer.closeAll('page');
+    });
 
+    getParents(selectItem,type);
+    //
+    layui.form.on('radio(permissionType)', function(data){
+        getParents(selectItem, data.value);
+    });
+}
+//获取所有父级菜单
+var parents1 = null;
+var parents2 = null;
+function getParents(selectItem,type){
+    var parents = (type==0?parents1:parents2);
+    if(parents!=null) {
+        layui.laytpl(parentsSelect.innerHTML).render(parents, function(html){
+            $("#parent-select").html(html);
+            $("#parent-select").val(selectItem);
+            layui.form.render('select');
+            layer.closeAll('loading');
+        });
+    }else{
+        layer.load(1);
+        $.get("permission/parent/"+type,{
+            token: getToken()
+        }, function(data){
+            if (type==0) {
+                parents1 = data;
+            }else{
+                parents2 = data;
+            }
+            getParents(selectItem,type);
+        });
+    }
+}
 //删除
 function doDelete(obj){
 	layer.confirm('确定要删除吗？', function(index){

@@ -3,8 +3,8 @@ package com.springmvc.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
-@Table(name = "u_user_role")
-public class UUserRole implements Serializable {
+@Table(name = "user_role")
+public class UserRole implements Serializable {
     /**
      * 用户ID
      */

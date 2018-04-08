@@ -108,10 +108,10 @@
   <!-- Spring MVC 核心配置结束 -->
 
   <!-- 激活Tomcat的defaultServlet来处理静态文件 -->
- <servlet-mapping>
+<!-- <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>/statics/*</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>-->
 
   <!-- session 时间 -->
   <session-config>

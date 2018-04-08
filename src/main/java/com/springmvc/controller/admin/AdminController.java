@@ -102,10 +102,5 @@ String massages="0";
 
         return "/views/layout";
     }
-    @RequestMapping("user/administrators/role")
-    public String list(HttpServletRequest request){
 
-
-        return "/views/user/administrators/role";
-    }
 }

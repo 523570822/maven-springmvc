@@ -1,12 +1,9 @@
 package com.springmvc.common.core.shiro.token.manager;
 
 import com.springmvc.common.core.shiro.token.ShiroToken;
-import com.springmvc.entity.UUser;
+import com.springmvc.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
-import org.apache.shiro.subject.SimplePrincipalCollection;
-
-import java.util.List;
 
 
 /**
@@ -31,8 +28,8 @@ public class TokenManager {
 	 * 获取当前登录的用户User对象
 	 * @return
 	 */
-	public static UUser getToken(){
-		UUser token = (UUser) SecurityUtils.getSubject().getPrincipal();
+	public static User getToken(){
+		User token = (User) SecurityUtils.getSubject().getPrincipal();
 		return token ;
 	}
 	
@@ -92,7 +89,7 @@ public class TokenManager {
 	 * @param rememberMe
 	 * @return
 	 */
-	public static UUser login(UUser user,Boolean rememberMe){
+	public static User login(User user, Boolean rememberMe){
 		ShiroToken token = new ShiroToken(user.getEmail(), user.getPswd());
 		token.setRememberMe(rememberMe);
 		SecurityUtils.getSubject().login(token);

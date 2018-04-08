@@ -1,6 +1,6 @@
 package com.springmvc.common.core.shiro.token;
 
-import com.springmvc.entity.UUser;
+import com.springmvc.entity.User;
 import com.springmvc.service.RoleService;
 import com.springmvc.service.UserService;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -35,7 +35,7 @@ public class CustomRealm extends AuthorizingRealm {
         //令牌中可以取出用户名
         String userName = token.getUsername();
         //String userName = authenticationToken.getPrincipal().toString();  //第二种获取用户名写法
-        UUser user = userService.queryUserByName(userName);
+        User user = userService.queryUserByName(userName);
 
 
         if (user!=null) {

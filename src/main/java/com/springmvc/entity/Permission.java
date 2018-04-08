@@ -1,83 +1,250 @@
 package com.springmvc.entity;
 
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.*;
 
-/**
- * <p>User: Zhang Kaitao
- * <p>Date: 14-1-28
- * <p>Version: 1.0
- */
 public class Permission implements Serializable {
-    private Long id;
-    private String permission; //权限标识 程序中判断使用,如"user:create"
-    private String description; //权限描述,UI界面显示使用
-    private Boolean available = Boolean.FALSE; //是否可用,如果不可用将不会添加给用户
 
-    public Permission() {
-    }
 
-    public Permission(String permission, String description, Boolean available) {
-        this.permission = permission;
-        this.description = description;
-        this.available = available;
-    }
 
-    public Long getId() {
+
+
+
+    /**
+     * 主键id
+     */
+    private String id;
+
+    /**
+     * 上级权限
+     */
+    @Column(name = "parent_id")
+    private String parentId;
+
+    /**
+     * 权限名
+     */
+    private String name;
+
+    /**
+     * 权限值
+     */
+    private String value;
+
+    /**
+     * 创建时间
+     */
+    @Column(name = "create_time")
+    private Date createTime;
+
+    /**
+     * 修改时间
+     */
+    @Column(name = "update_time")
+    private Date updateTime;
+
+    /**
+     * 是否删除：0否,1是
+     */
+    @Column(name = "is_delete")
+    private Integer isDelete;
+
+    /**
+     * 图标
+     */
+    private String icon;
+
+    /**
+     * 菜单排序编号
+     */
+    @Column(name = "order_number")
+    private Integer orderNumber;
+
+    /**
+     * 权限类型：0菜单，1按钮
+     */
+    private Integer type;
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 获取主键id
+     *
+     * @return id - 主键id
+     */
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    /**
+     * 设置主键id
+     *
+     * @param id 主键id
+     */
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public String getPermission() {
-        return permission;
+    /**
+     * 获取上级权限
+     *
+     * @return parent_id - 上级权限
+     */
+    public String getParentId() {
+        return parentId;
     }
 
-    public void setPermission(String permission) {
-        this.permission = permission;
+    /**
+     * 设置上级权限
+     *
+     * @param parentId 上级权限
+     */
+    public void setParentId(String parentId) {
+        this.parentId = parentId == null ? null : parentId.trim();
     }
 
-    public String getDescription() {
-        return description;
+    /**
+     * 获取权限名
+     *
+     * @return name - 权限名
+     */
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    /**
+     * 设置权限名
+     *
+     * @param name 权限名
+     */
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public Boolean getAvailable() {
-        return available;
+    /**
+     * 获取权限值
+     *
+     * @return value - 权限值
+     */
+    public String getValue() {
+        return value;
     }
 
-    public void setAvailable(Boolean available) {
-        this.available = available;
+    /**
+     * 设置权限值
+     *
+     * @param value 权限值
+     */
+    public void setValue(String value) {
+        this.value = value == null ? null : value.trim();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Permission role = (Permission) o;
-
-        if (id != null ? !id.equals(role.id) : role.id != null) return false;
-
-        return true;
+    /**
+     * 获取创建时间
+     *
+     * @return create_time - 创建时间
+     */
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+    /**
+     * 设置创建时间
+     *
+     * @param createTime 创建时间
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", permission='" + permission + '\'' +
-                ", description='" + description + '\'' +
-                ", available=" + available +
-                '}';
+    /**
+     * 获取修改时间
+     *
+     * @return update_time - 修改时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 设置修改时间
+     *
+     * @param updateTime 修改时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    /**
+     * 获取是否删除：0否,1是
+     *
+     * @return is_delete - 是否删除：0否,1是
+     */
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    /**
+     * 设置是否删除：0否,1是
+     *
+     * @param isDelete 是否删除：0否,1是
+     */
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    /**
+     * 获取图标
+     *
+     * @return icon - 图标
+     */
+    public String getIcon() {
+        return icon;
+    }
+
+    /**
+     * 设置图标
+     *
+     * @param icon 图标
+     */
+    public void setIcon(String icon) {
+        this.icon = icon == null ? null : icon.trim();
+    }
+
+    /**
+     * 获取菜单排序编号
+     *
+     * @return order_number - 菜单排序编号
+     */
+    public Integer getOrderNumber() {
+        return orderNumber;
+    }
+
+    /**
+     * 设置菜单排序编号
+     *
+     * @param orderNumber 菜单排序编号
+     */
+    public void setOrderNumber(Integer orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    /**
+     * 获取权限类型：0菜单，1按钮
+     *
+     * @return type - 权限类型：0菜单，1按钮
+     */
+    public Integer getType() {
+        return type;
+    }
+
+    /**
+     * 设置权限类型：0菜单，1按钮
+     *
+     * @param type 权限类型：0菜单，1按钮
+     */
+    public void setType(Integer type) {
+        this.type = type;
     }
 }
