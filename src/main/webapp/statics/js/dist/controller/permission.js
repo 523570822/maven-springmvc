@@ -247,7 +247,4 @@ function saveRolePerm(roleId,index){
 	},"json");
 
 
-}   //获取当前token
-function getToken() {
-    return localStorage.getItem("token");
 }

@@ -33,6 +33,7 @@
 <%--<script src="//res.layui.com/layui/rc/layui.js?t=20180323-1"></script>--%>
 <%--<script src="../statics/js/plugins/jquery.min.js"></script>--%>
 <script src="statics/layui/layui.js"></script>
+
 <script>
     layui.config({
         base: 'statics/js/' //指定 layuiAdmin 项目路径
@@ -50,7 +51,9 @@
     });
 </script>
 
+<%--<script type="text/javascript"  src="statics/js/dist/controller/common.js"  />--%>
 <script type="text/javascript"  src="statics/js/dist/controller/cphp.js"  />
+
 
 </body>
 </html>

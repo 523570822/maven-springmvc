@@ -14,6 +14,7 @@ public class Permission implements Serializable {
     /**
      * 主键id
      */
+
     private String id;
 
     /**
@@ -247,4 +248,6 @@ public class Permission implements Serializable {
     public void setType(Integer type) {
         this.type = type;
     }
+
+
 }

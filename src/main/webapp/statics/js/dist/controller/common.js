@@ -1,14 +1,26 @@
 /** layuiAdmin.pro-v1.0.0-beta7 LPPL License By http://www.layui.com/admin/ */
-;layui.define(function (e) {
+
+/** layuiAdmin.pro-v1.0.0-beta7 LPPL License By http://www.layui.com/admin/ */
+;
+layui.define(function(e) {
     var i = (layui.$, layui.layer, layui.laytpl, layui.setter, layui.view, layui.admin);
-    i.events.logout = function () {
+    i.events.logout = function() {
         i.req({
-            url: "./json/user/logout.js", type: "get", data: {}, done: function (e) {
+            url: "./json/user/logout.js",
+            type: "get",
+            data: {},
+            done: function(e) {
                 i.exit()
             }
         })
-    }, e("common", {})
+    },
+        e("common", {})
 
-
-
+    //获取当前token
+    function getToken() {
+        return localStorage.getItem("token");
+    }
 });
+
+
+

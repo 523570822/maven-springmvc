@@ -1,8 +1,11 @@
 package com.springmvc.common.core.shiro.token;
 
 import com.springmvc.common.core.shiro.token.manager.TokenManager;
+import com.springmvc.entity.User;
+import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
+import org.apache.shiro.web.util.WebUtils;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -49,7 +52,14 @@ public class CustomFormAuthenticationFilter extends FormAuthenticationFilter {
 
 
                 //之前登陆的用户
-                String username = (String)subject.getPrincipal();
+             User    user  = (User)subject.getPrincipal();
+                String username=null;
+             if(user==null){
+
+             }else{
+                  username=user.getEmail();
+             }
+
 
 
                 //如果两次登陆的用户不一样，则先退出之前登陆的用户
@@ -59,7 +69,21 @@ public class CustomFormAuthenticationFilter extends FormAuthenticationFilter {
                 }
             }
         }
-
-        return super.isAccessAllowed(request, response, mappedValue);
+        boolean bool = super.isAccessAllowed(request, response, mappedValue);
+        return bool;
     }
+    @Override
+    protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request,
+                                     ServletResponse response) throws Exception {
+        //获取已登录的用户信息
+       User activeUser = (User) subject.getPrincipal();
+        //获取session
+        HttpServletRequest httpServletRequest = WebUtils.toHttp(request);
+        HttpSession session = httpServletRequest.getSession();
+        //把用户信息保存到session
+        session.setAttribute("user", activeUser);
+        session.setAttribute("userId", activeUser.getId());
+        return super.onLoginSuccess(token, subject, request, response);
+    }
+
 }

@@ -40,7 +40,8 @@ public class CustomRealm extends AuthorizingRealm {
 
         if (user!=null) {
             //AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), getName());
-            AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getNickname(), user.getPswd(), getName());
+            AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user, user.getPswd(), getName());
+
             return authenticationInfo;
         }
         return null;

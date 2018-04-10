@@ -51,7 +51,7 @@
 </head>
 
 <body class="layui-layout-body">
-<script src="http://open.sojson.com/common/js/canvas-nest.min.js" count="200" zindex="-2" opacity="0.8" color="47,135,193" type="text/javascript"></script>
+<script src="statics/js/plugins/canvas/canvas-nest.min.js" count="200" zindex="-2" opacity="0.8" color="47,135,193" type="text/javascript"></script>
 <div id="LAY_app" class="layadmin-tabspage-none">
     <div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
         <div class="layadmin-user-login-main">

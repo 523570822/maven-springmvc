@@ -14,5 +14,9 @@ public interface PermissionService extends BaseService<Permission,Integer>  {
  public PageResult<PermissionU> getPermissions(Integer page, Integer limit, String searchKey, String searchValue, Integer isDelete);
 
     public List<Permission> getParentPermissions(int type);
+    /**
+     * 获取用户的菜单导航
+     */
+    public List<PermissionU> getMenusByUser(Long userId);
 
 }

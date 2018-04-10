@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%--<script type="text/javascript"  src="statics/js/dist/controller/common.js"  />--%>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <!-- 头部区域 -->
@@ -60,7 +60,7 @@
                         <dd><a lay-href="set/user/info">基本资料</a></dd>
                         <dd><a lay-href="set/user/password">修改密码</a></dd>
                         <hr>
-                        <dd  style="text-align: center;"><a  href="admin/logout.do ;" >退出</a></dd>
+                        <dd  style="text-align: center;"><a  href="javascript:logout();" >退出</a></dd>
                     </dl>
                 </script>
             </li>
@@ -75,85 +75,37 @@
     </div>
 
     <!-- 侧边菜单 -->
+
     <div class="layui-side layui-side-menu">
         <div class="layui-side-scroll">
-            <script type="text/html" template lay-url="statics/json/menu.json?v=3"
-                    lay-done="layui.element.render('nav', 'layadmin-system-side-menu');" id="TPL_layout">
-
-                <div class="layui-logo" lay-href="">
-                    <span>{{ layui.setter.name || 'layuiAdmin' }}</span>
-                </div>
-
-                <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
-                    {{#
-                    var path =  layui.router().path
-                    ,pathURL = layui.admin.correctRouter(path.join('/'))
-                    ,dataName = layui.setter.response.dataName;
-
-                    layui.each(d[dataName], function(index, item){
-                    var hasChildren = typeof item.list === 'object' && item.list.length > 0
-                    ,classSelected = function(){
-                    var match = path[0] == item.name || (index == 0 && !path[0])
-                    || (item.jump && pathURL == layui.admin.correctRouter(item.jump));
-                    if(match){
-                    return hasChildren ? 'layui-nav-itemed' : 'layui-this';
-                    }
-                    return '';
-                    }
-                    ,url = (item.jump && typeof item.jump === 'string') ? item.jump : item.name;
-                    }}
-                    <li data-name="{{ item.name || '' }}" data-jump="{{ item.jump || '' }}" class="layui-nav-item {{ classSelected() }}">
-                        <a href="javascript:;" {{ hasChildren ? '' : 'lay-href="'+ url +'"' }} lay-tips="{{ item.title }}" lay-direction="2">
-                        <i class="layui-icon {{ item.icon }}"></i>
-                        <cite>{{ item.title }}</cite>
-                        </a>
-                        {{# if(hasChildren){ }}
-                        <dl class="layui-nav-child">
-                            {{# layui.each(item.list, function(index2, item2){
-                            var hasChildren2 = typeof item2.list == 'object' && item2.list.length > 0
-                            ,classSelected2 = function(){
-                            var match = (path[0] == item.name && path[1] == item2.name)
-                            || (item2.jump && pathURL == layui.admin.correctRouter(item2.jump));
-                            if(match){
-                            return hasChildren2 ? 'layui-nav-itemed' : 'layui-this';
-                            }
-                            return '';
-                            }
-                            ,url2 = (item2.jump && typeof item2.jump === 'string')
-                            ? item2.jump
-                            : [item.name, item2.name, ''].join('/');
-                            }}
-                            <dd  data-name="{{ item2.name || '' }}"  data-jump="{{ item2.jump || '' }}"
-                                 {{ classSelected2() ? ('class="'+ classSelected2() +'"') : '' }}>
-                            <a href="javascript:;" {{ hasChildren2 ? '' : 'lay-href="'+ url2 +'"' }}>{{ item2.title }}</a>
-                            {{# if(hasChildren2){ }}
-                            <dl class="layui-nav-child">
-                                {{# layui.each(item2.list, function(index3, item3){
-                                var match = (path[0] == item.name && path[1] == item2.name && path[2] == item3.name)
-                                || (item3.jump && pathURL == layui.admin.correctRouter(item3.jump))
-                                ,url3 = (item3.jump && typeof item3.jump === 'string')
-                                ? item3.jump
-                                : [item.name, item2.name, item3.name].join('/')
-                                }}
-                                <dd data-name="{{ item3.name || '' }}"  data-jump="{{ item3.jump || '' }}"
-                                    {{ match ? 'class="layui-this"' : '' }}>
-                                <a href="javascript:;" lay-href="{{ url3 }}" {{ item3.iframe ? 'lay-iframe="true"' : '' }}>{{ item3.title }}</a>
-                                </dd>
-                                {{# }); }}
-                            </dl>
-                            {{# } }}
-                            </dd>
-                            {{# }); }}
-                        </dl>
-                        {{# } }}
-                    </li>
-                    {{# }); }}
-                </ul>
-            </script>
+            <ul class="layui-nav layui-nav-tree" id="index-nav" lay-filter="index-nav" style="margin-top: 25px;">
+            </ul>
         </div>
     </div>
 
+    <script type="text/javascript" src="statics/js/loyout.js"></script>
 
+    <!-- 侧导航渲染模板 -->
+    <!-- 侧导航渲染模板 -->
+    <script id="sideNav" type="text/html">
+        {{#  layui.each(d, function(index, item){ }}
+        <li class="layui-nav-item">
+
+
+            <a class=""    href="javascript:openNavItem();"    ><i class="layui-icon">{{ item.icon }}</i>&emsp;<span>{{ item.name }}</span></a>
+            {{# if(item.subMenus!=null&&item.subMenus.length>0){ }}
+            <dl class="layui-nav-child">
+                {{#  layui.each(item.subMenus, function(index, subItem){ }}
+                <dd>
+                    <a href="javascript:;"  lay-href="{{ subItem.value }}">{{ subItem.name }}</a>
+                </dd>
+                {{#  }); }}
+            </dl>
+
+            {{#  };  }}
+        </li>
+        {{#  }); }}
+    </script>
     <!-- 页面标签 -->
     <script type="text/html" template lay-done="layui.element.render('nav', 'layadmin-pagetabs-nav')">
         {{# if(layui.setter.pageTabs){ }}

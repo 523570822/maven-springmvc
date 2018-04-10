@@ -8,7 +8,7 @@ layui.use(['form', 'table'], function(){
     //渲染表格
 	layui.table.render({
 		elem : '#table',
-        url : 'api/role/list',
+        url : 'role/list',
 		page: true,
 
 		cols: [[
@@ -200,7 +200,5 @@ function saveRolePerm(roleId,index){
 	},"json");
 
 
-}   //获取当前token
-function getToken() {
-    return localStorage.getItem("token");
 }
+
