@@ -106,7 +106,7 @@ public class PermissionServiceImpl extends BaseServiceImpl<Permission, Integer>i
     @Override
     public List<PermissionU> getMenusByUser(Long  userId) {
         List<PermissionU> results = new ArrayList<PermissionU>();
-       List<PermissionU> permissions =  mapper.selectPermissionByUserId(userId);
+    /*   List<PermissionU> permissions =  mapper.selectPermissionByUserId(userId);
         for(PermissionU one1 : permissions) {
             if("0".equals(one1.getParentId())){
                 List<PermissionU> subMenu = new ArrayList<PermissionU>();
@@ -118,7 +118,7 @@ public class PermissionServiceImpl extends BaseServiceImpl<Permission, Integer>i
                 one1.setSubMenus(subMenu);
                 results.add(one1);
             }
-        }
+        }*/
 
         return results;
     }
